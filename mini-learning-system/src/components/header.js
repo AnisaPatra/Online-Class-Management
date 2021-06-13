@@ -1,13 +1,32 @@
 import React from 'react'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown,Popover, OverlayTrigger, Button } from 'react-bootstrap';
 import './header.css';
-import {isUserLoggedIn, signout} from '../actions/authentication';
+import { isUserLoggedIn, signout } from '../actions/authentication';
 import { useSelector } from 'react-redux';
-
+import { NavLink, Link } from 'react-router-dom';
 /**
 * @author
 * @function Header
 **/
+
+const Profile = () => {
+  const auth = useSelector(state => state.auth);
+  return(
+    <OverlayTrigger trigger="click" placement="bottom" overlay={
+      <Popover id="popover-basic" style={{ backgroundColor: "#f2f2f2" }}>
+        <Popover.Content >
+          <center>
+            <p>Edit Profile</p>
+            <p>My Courses</p>
+            <p>Sign Out</p>   
+          </center>
+        </Popover.Content>
+      </Popover>
+    }>
+      <p>Hi, {auth.user.name}</p>
+    </OverlayTrigger>
+  )
+}
 
 const Header = (props) => {
   const auth = useSelector(state => state.auth);
@@ -48,28 +67,29 @@ const Header = (props) => {
             <a href="/">Contact Us</a>
           </button>*/}
           <button className="header-right-button">
-            {auth.authenticate ? <pre>Hi, {auth.user.name}</pre> : <a href="/auth">Sign in</a> }
+
+            {auth.authenticate ? <Profile/>: <a href="/auth">Sign in</a>}
           </button>
         </div>
       </Navbar>
       <Navbar style={{ paddingInlineStart: "30px", color: "white" }} className="lower-header" expand={false}>
-      <table cellPadding="15px">
-        <tr>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ color: "white" }} />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link>Biology</Nav.Link>
-            <Nav.Link>Economics</Nav.Link>
-            <Nav.Link>Social Science</Nav.Link>
-            <Nav.Link>Finance & Accounting</Nav.Link>
-            <Nav.Link>Computer Science</Nav.Link>
-            <Nav.Link>Personal Development</Nav.Link>
-            <Nav.Link>Business Administration</Nav.Link>
-            <Nav.Link>Computers</Nav.Link>
-            <Nav.Link>Mass Media</Nav.Link>
-            <Nav.Link>New</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+        <table cellPadding="15px">
+          <tr>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ color: "white" }} />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link>Biology</Nav.Link>
+                <Nav.Link>Economics</Nav.Link>
+                <Nav.Link>Social Science</Nav.Link>
+                <Nav.Link>Finance & Accounting</Nav.Link>
+                <Nav.Link>Computer Science</Nav.Link>
+                <Nav.Link>Personal Development</Nav.Link>
+                <Nav.Link>Business Administration</Nav.Link>
+                <Nav.Link>Computers</Nav.Link>
+                <Nav.Link>Mass Media</Nav.Link>
+                <Nav.Link>New</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
             <td>Biology</td>
             <td>Economics</td>
             <td>Social Science</td>

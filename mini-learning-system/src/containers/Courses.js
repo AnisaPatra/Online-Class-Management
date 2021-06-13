@@ -1,49 +1,51 @@
-import React, { Component } from 'react'
-import axios from 'axios';
+import React from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { getCourses } from '../actions/courses';
 import { MDBBtnGroup, MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 /**
 * @author
 * @function Courses
 **/
 
-
-export default class Courses extends Component {
-  constructor(props) {
-    super(props);
-    this.CoursesList = this.CoursesList.bind(this);
-    this.state = {
-      courses: []
-    }
-  }
-
-  componentDidMount() {
-    var a = null;
-    var x = [];
-    axios.get('http://localhost:2000/courses')
-      .then(res => {
-        this.setState({
-          courses: res.data,
+const Courses = (props) => {
+  const dispatch = useDispatch();
+  dispatch(getCourses());
+  const courses = useSelector(state => state.courses);
+  return(
+    <div>
+      {
+        courses.map((course)=>{
+          <MDBCol>
+              <MDBCard >
+                <MDBCardImage src={"http://localhost:2000" + course.courseImage} />
+                <MDBCardBody>
+                  <MDBCardTitle >{course.CourseDept}</MDBCardTitle>
+                  <MDBCardText>
+                    {course.CourseName}
+                  </MDBCardText><hr style={{ height: "12px", color: "black" }} />
+                  <MDBCardText >
+                    {course.description}
+                  </MDBCardText>
+                  <MDBCardText >
+                    {course.CourseRoom}
+                  </MDBCardText>
+                  <MDBCardText >
+                    {course.Waitlist_Capacity}
+                  </MDBCardText>
+                  <MDBCardText >
+                    {course.CourseTeam}
+                  </MDBCardText>
+                  <MDBCardText >
+                    {course.CourseTeam}
+                  </MDBCardText>
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
         })
-        console.log(this.state.courses);
-      })
-      .catch(err => { console.log(err) });
-  }
+      }
+    </div>
+   )
 
-  CoursesList(){
-    this.state.courses.map(function(item){
-      return(
-        <div style={{background:"black"}}>
-        <p>Hi</p>
-        <p>{item.CourseId}</p>
-        </div>
-      ) 
-    })
-  }
-  
+ }
 
-  render() {
-    return (
-      <div>{this.CoursesList()}</div>
-    )
-  }
-}
+export default Courses
