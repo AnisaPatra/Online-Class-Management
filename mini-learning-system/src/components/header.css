@@ -1,0 +1,69 @@
+.logo{
+    background-color: #fed851;
+    border: 0;
+    color: black;
+    font-size:25px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    float: left;
+}
+
+.logo:hover{
+    border-color: white;
+    border-width: 22px;
+}
+
+.drp-btn{
+    color: white;
+    padding: 0;
+    width: max-content;
+    border: white;
+}
+
+.header-right-button{
+    background-color: #fed851;
+    border: 0;
+    color: black;
+    padding: 15px;
+    margin-inline-start: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    float: left;
+}
+
+ /* unvisited link */
+ .header-right-button a:link {
+    color: black;
+  }
+  
+  /* visited link */
+  .header-right-button a:visited {
+    color: black;
+  }
+  
+  /* mouse over link */
+  .header-right-button a:hover {
+    color: white;
+  }
+  
+  /* selected link */
+  .header-right-button a:active {
+    color: black;
+  } 
+  
+.header-right-button .active {
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+  }
+
+.lower-header{
+    background-color: rgb(35, 47, 63);
+    color: white;
+    display: flex;
+}
+
+.lower-header table tr td{
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-stretch: extra-expanded;
+}

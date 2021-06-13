@@ -1,0 +1,45 @@
+.footer{
+    background-color: #232F3E;
+    box-sizing: border-box;
+    line-height: 120%;
+}
+
+.below-footer{
+    background-color: black;
+    box-sizing: border-box;
+    line-height: 120%;
+}
+
+.line{
+    border-top: 1px solid #3a4553;
+    margin-top: 40px;
+    
+}
+
+.colHead{
+    font-weight: 700;
+    color: #FFF;
+    font-family: inherit;
+    font-size: 17px;
+    white-space: nowrap;
+    margin-left: 38px;
+}
+
+.lists{
+    list-style-type: none;
+    color: white;
+}
+
+.lists li{
+    font-size: 15px;
+    padding: 5px 0;
+}
+
+.below-footer .colHead{
+    font-size: 15px;
+}
+
+.below-footer .lists li{
+    font-size: 13px;
+    padding: 0;
+}
